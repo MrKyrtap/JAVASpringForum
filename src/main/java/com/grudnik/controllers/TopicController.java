@@ -29,6 +29,7 @@ public class TopicController {
     public String index(Model model, @PathVariable("id") int id) {
         List<Post> posts = topicService.getAllPosts(id);
         model.addAttribute("posts", posts);
+        model.addAttribute("id", id);
         return "topic";
     }
     @RequestMapping(value = "topic/new", method = RequestMethod.POST)
@@ -40,7 +41,7 @@ public class TopicController {
         String author = auth.getName();
         int x  = topicService.addNewTopic(author,topic,txt, catid);
 
-        model.addAttribute("dupa", x);
+
 
         return "redirect:" + new String("/topic/"+x);
     }

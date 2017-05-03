@@ -51,7 +51,7 @@ public class TopicService {
         newt.setCategory(cat);
         topicRepository.save(newt);
 
-        postService.addPost(date,user,text,newt);
+        postService.addPost(date,author,text,newt.getId()+"");
         return  newt.getId();
 
     }

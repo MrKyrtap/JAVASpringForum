@@ -11,7 +11,7 @@
 </head>
 <body style="margin:4px; padding:4px; ">
 <div th:replace="header/header :: header">dupa</div>
-<span th:text="${username}"/>
+
 <table style="width: 80%" align="center" class="table table-bordered" th:each="post : ${posts}">
     <tr>
         <td rowspan="2" th:text="${post.autor.name}"/>
@@ -22,6 +22,27 @@
     </tr>
 </table>
 
+
+
+
+<table align="center" style="width:80%">
+    <form action="/post/new" method="post" class="form-horizontal">
+        <input type="hidden" th:value="${id}" name="topicid"/>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Text</label>
+
+            <textarea rows="10" class="form-control" id="text" name="text"></textarea>
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-4">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</table>
 
 
 
