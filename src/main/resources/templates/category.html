@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="margin:4px; padding:4px; ">
+<div th:replace="header/header :: header">dupa</div>
+
+
+<a th:href="'/category/newtopic/'+${id}" type="button" class="btn btn-info">New topic</a>
+<table align="center" style="width:80%" class="table">
+    <tr class="info" th:each="topic : ${topics}">
+        <td ><a th:href="'/topic/'+${topic.id}"> <span style="font-weight: bold" th:text="${topic.name}"/></a></td>
+        <td ><span style="font-weight: bold" th:text="${topic.author.name}"/></td>
+        <td ><span style="font-weight: bold" th:text="${topic.date}"/></td>
+
+
+
+    </tr>
+</table>
+
+
+</body>
+</html>
