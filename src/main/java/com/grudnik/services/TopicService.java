@@ -25,9 +25,6 @@ public class TopicService {
     private final PostService postService ;
 
 
-
-
-
     public TopicService(PostRepository postRepository, UserRepository userRepository, TopicRepository topicRepository, CategoryRepository categoryRepository, PostService postService) {
         this.postRepository = postRepository;
         this.userRepository = userRepository;
@@ -50,7 +47,6 @@ public class TopicService {
         newt.setDate(date);
         newt.setCategory(cat);
         topicRepository.save(newt);
-
         postService.addPost(date,author,text,newt.getId()+"");
         return  newt.getId();
 

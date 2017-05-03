@@ -26,7 +26,7 @@ public class PostService {
         this.topicRepository = topicRepository;
     }
 
-    public void addPost(Date date, String usermail, String text, String topic){
+    public void addPost(Date date, String usermail, String text, String topic) {
         Post post = new Post();
         User user = userRepository.findByMail(usermail);
         Topic t = topicRepository.findOne(Integer.parseInt(topic));
@@ -34,11 +34,6 @@ public class PostService {
         post.setAutor(user);
         post.setText(text);
         post.setTopic(t);
-
         postRepository.save(post);
-
-
-
-
     }
 }

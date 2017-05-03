@@ -40,10 +40,6 @@ public class TopicController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String author = auth.getName();
         int x  = topicService.addNewTopic(author,topic,txt, catid);
-
-
-
         return "redirect:" + new String("/topic/"+x);
     }
-
 }

@@ -26,15 +26,13 @@ public class PostController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping(value = "post/new" , method = RequestMethod.POST)
-    public String addNewPost(Model model, HttpServletRequest request){
+    @RequestMapping(value = "post/new", method = RequestMethod.POST)
+    public String addNewPost(Model model, HttpServletRequest request) {
         String topicid = request.getParameter("topicid");
         String text = request.getParameter("text");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String author = auth.getName();
-        postService.addPost(new Date(),author,text,topicid);
-
-
-        return "redirect:" + new String("/topic/"+topicid);
+        postService.addPost(new Date(), author, text, topicid);
+        return "redirect:" + new String("/topic/" + topicid);
     }
 }
