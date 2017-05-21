@@ -6,8 +6,10 @@ import com.grudnik.entities.User;
 import com.grudnik.repo.PostRepository;
 import com.grudnik.repo.TopicRepository;
 import com.grudnik.repo.UserRepository;
+import javafx.geometry.Pos;
 import org.springframework.stereotype.Service;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Date;
 
 /**
@@ -36,4 +38,20 @@ public class PostService {
         post.setTopic(t);
         postRepository.save(post);
     }
+
+    public boolean editPost(int id, String user) {
+        String trueAuthor = postRepository.findOne(id).getAutor().getMail();
+        System.out.println("true : " + trueAuthor+" user:"+user);
+        return (trueAuthor.equals(user)) ? true : false;
+    }
+    public String getText(int id){
+        return postRepository.findOne(id).getText();
+    }
+    public int saveEdited(String text, int id){
+        Post p  = postRepository.findOne(id);
+        p.setText(text);
+        postRepository.save(p);
+        return p.getTopic().getId();
+    }
+
 }

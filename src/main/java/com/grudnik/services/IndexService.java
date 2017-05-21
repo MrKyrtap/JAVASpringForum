@@ -15,9 +15,8 @@ import java.util.List;
  */
 @Service
 public class IndexService {
-   private final CategoryRepository catrepo ;
-   private final MainCategoryRepsitory maincatrepo ;
-
+    private final CategoryRepository catrepo;
+    private final MainCategoryRepsitory maincatrepo;
 
 
     @Autowired
@@ -26,23 +25,22 @@ public class IndexService {
         this.maincatrepo = maincatrepo;
     }
 
-    public  HashMap<String, List<Category>> getcategory(){
-        HashMap<String, List<Category>> hashmap =
-                new HashMap<String, List<Category>>();
-        
-        List<Category> list ;
-        List<MainCategory> mcat = maincatrepo.findAll();
-        for (MainCategory maincategory:mcat) {
-            list = catrepo.findByCategoryId(maincategory.getId());
+    public HashMap<String, List<Category>> getcategory() {
+        HashMap<String, List<Category>> hashmap = new HashMap<String, List<Category>>();
 
-            hashmap.put(maincategory.getName(),list);
-            
+        List<Category> list;
+        List<MainCategory> mcat = maincatrepo.findAll();
+        for (MainCategory maincategory : mcat) {
+            list = catrepo.findByCategoryId(maincategory.getId());
+            hashmap.put(maincategory.getName(), list);
+
         }
-        
-         return hashmap;
+
+        return hashmap;
     }
-    public List<MainCategory> getmaincategory(){
-         return maincatrepo.findAll();
+
+    public List<MainCategory> getmaincategory() {
+        return maincatrepo.findAll();
     }
 
 }

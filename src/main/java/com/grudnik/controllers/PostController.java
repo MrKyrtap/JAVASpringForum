@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,5 +35,27 @@ public class PostController {
         String author = auth.getName();
         postService.addPost(new Date(), author, text, topicid);
         return "redirect:" + new String("/topic/" + topicid);
+    }
+    @RequestMapping(value = "post/edit/{id}", method = RequestMethod.GET)
+    public String editPost(Model model, HttpServletRequest request, @PathVariable("id") int id) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String author = auth.getName();
+        String text = postService.getText(id);
+        if(postService.editPost(id,author)){
+            model.addAttribute("text",text);
+            model.addAttribute("id",id);
+            return "reply";
+        }else{
+            model.addAttribute("message", new String("Not your post!"));
+            return "message" ;
+        }
+    }
+    @RequestMapping(value = "post/edit/save", method = RequestMethod.POST)
+    public String saveEdited(Model model, HttpServletRequest request) {
+        int postid = Integer.parseInt(request.getParameter("postid"));
+        String text = request.getParameter("text");
+
+        return "redirect:" + new String("/topic/"+postService.saveEdited(text, postid));
     }
 }

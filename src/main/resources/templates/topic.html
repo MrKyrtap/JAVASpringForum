@@ -16,6 +16,8 @@
     <tr>
         <td rowspan="2" th:text="${post.autor.name}"/>
         <td style="font-size: small" th:text=" 'Dodano: '+${post.date}"/>
+        <td style="font-size: small"> <a th:href="'/post/edit/'+${post.id}">Edit</a></td>
+
     </tr>
     <tr>
         <td th:text="${post.text}"/>
