@@ -58,4 +58,11 @@ public class PostController {
 
         return "redirect:" + new String("/topic/"+postService.saveEdited(text, postid));
     }
+
+    @RequestMapping (value = "post/delete", method = RequestMethod.POST)
+        public String deletePost(Model model, HttpServletRequest request){
+            int postid = Integer.parseInt(request.getParameter("postid"));
+            int topicid =  postService.deletePost(postid);
+            return "redirect:" + new String("/topic/" + topicid);
+    }
 }

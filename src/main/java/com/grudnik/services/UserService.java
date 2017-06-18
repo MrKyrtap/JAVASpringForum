@@ -4,6 +4,9 @@ import com.grudnik.entities.Role;
 import com.grudnik.entities.User;
 import com.grudnik.repo.RoleRepository;
 import com.grudnik.repo.UserRepository;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

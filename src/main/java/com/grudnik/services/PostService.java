@@ -53,5 +53,11 @@ public class PostService {
         postRepository.save(p);
         return p.getTopic().getId();
     }
+    public int deletePost(int id){
+
+        int topicid = postRepository.findOne(id).getTopic().getId();
+        postRepository.delete(id);
+        return  topicid;
+    }
 
 }

@@ -17,6 +17,7 @@
         <td rowspan="2" th:text="${post.autor.name}"/>
         <td style="font-size: small" th:text=" 'Dodano: '+${post.date}"/>
         <td style="font-size: small"> <a th:href="'/post/edit/'+${post.id}">Edit</a></td>
+        <td> <form action="/post/delete" method="post"><input name="postid" type="hidden" th:value="${post.id}"/><input type="submit" value="Delete"/> </form> </td>
 
     </tr>
     <tr>
