@@ -11,38 +11,46 @@
 </head>
 <body style="margin:4px; padding:4px; ">
 <div th:replace="header/header :: header">dupa</div>
+<div>
+    <table style="width: 80%" align="center" class="table table-bordered" th:each="post : ${posts}">
+        <tr>
+            <td rowspan="2" th:text="${post.autor.name}"/>
+            <td style="font-size: small" th:text=" 'Dodano: '+${post.date}"/>
+            <td style="font-size: small"><a th:href="'/post/edit/'+${post.id}">
+                <button class="btn btn-info">Edit</button>
+            </a></td>
+            <td>
+                <form action="/post/delete" method="post"><input name="postid" type="hidden"
+                                                                 th:value="${post.id}"/><input class="btn btn-danger"
+                                                                                               type="submit"
+                                                                                               value="Delete"/></form>
+            </td>
 
-<table style="width: 80%" align="center" class="table table-bordered" th:each="post : ${posts}">
-    <tr>
-        <td rowspan="2" th:text="${post.autor.name}"/>
-        <td style="font-size: small" th:text=" 'Dodano: '+${post.date}"/>
-        <td style="font-size: small"> <a th:href="'/post/edit/'+${post.id}">Edit</a></td>
-        <td> <form action="/post/delete" method="post"><input name="postid" type="hidden" th:value="${post.id}"/><input type="submit" value="Delete"/> </form> </td>
-
-    </tr>
-    <tr>
-        <td th:text="${post.text}"/>
-    </tr>
-</table>
+        </tr>
+        <tr>
+            <td th:text="${post.text}"/>
+        </tr>
+    </table>
 
 
-<table align="center" style="width:80%">
-    <form action="/post/new" method="post" class="form-horizontal">
-        <input type="hidden" th:value="${id}" name="topicid"/>
+    <table align="center" class="table table-bordered">
+        <form action="/post/new" method="post" class="form-horizontal">
+            <input type="hidden" th:value="${id}" name="topicid"/>
 
-        <div class="form-group">
-            <label class="col-md-4 control-label">Text</label>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Text</label>
 
-            <textarea rows="10" class="form-control" id="text" name="text"></textarea>
+                <textarea width="80%" rows="10" class="form-control" id="text" name="text"></textarea>
 
-        </div>
-        <div class="form-group">
-
-            <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
             </div>
-        </div>
-    </form>
-</table>
+            <div class="form-group">
+
+                <div class="col-md-4">
+                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </table>
+</div>
 </body>
 </html>
