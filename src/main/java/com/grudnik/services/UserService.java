@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by PatrykGrudnik on 06/05/2017.
@@ -42,7 +43,9 @@ public class UserService {
     public User findUserByName(String name){
         return  userRepository.findByName(name);
     }
-
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
+    }
 
 }
 
