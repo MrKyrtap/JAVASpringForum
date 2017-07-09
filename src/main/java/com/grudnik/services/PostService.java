@@ -6,10 +6,10 @@ import com.grudnik.entities.User;
 import com.grudnik.repo.PostRepository;
 import com.grudnik.repo.TopicRepository;
 import com.grudnik.repo.UserRepository;
-import javafx.geometry.Pos;
+
 import org.springframework.stereotype.Service;
 
-import javax.jws.soap.SOAPBinding;
+
 import java.util.Date;
 
 /**

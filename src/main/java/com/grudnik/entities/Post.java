@@ -1,6 +1,6 @@
 package com.grudnik.entities;
 
-import com.sun.javafx.beans.IDProperty;
+
 
 import javax.persistence.*;
 import java.util.Date;
