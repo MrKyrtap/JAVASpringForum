@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MainCategoryRepsitory extends JpaRepository<MainCategory,Integer> {
+    MainCategory findByName(String name);
 }

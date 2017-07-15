@@ -7,6 +7,8 @@ import com.grudnik.repo.MainCategoryRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class IndexService {
         this.maincatrepo = maincatrepo;
     }
 
-    public HashMap<String, List<Category>> getcategory() {
+    public HashMap<String, List<Category>> getCategory() {
         HashMap<String, List<Category>> hashmap = new HashMap<String, List<Category>>();
 
         List<Category> list;
@@ -39,8 +41,12 @@ public class IndexService {
         return hashmap;
     }
 
-    public List<MainCategory> getmaincategory() {
+    public List<MainCategory> getMainCategory() {
         return maincatrepo.findAll();
     }
-
+    public void renameMainCategory(String oldName, String newName){
+        MainCategory cat = maincatrepo.findByName(oldName);
+        cat.setName(newName);
+        maincatrepo.save(cat);
+    }
 }

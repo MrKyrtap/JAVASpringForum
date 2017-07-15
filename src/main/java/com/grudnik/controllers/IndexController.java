@@ -2,8 +2,6 @@ package com.grudnik.controllers;
 
 import com.grudnik.entities.Category;
 import com.grudnik.entities.MainCategory;
-import com.grudnik.entities.User;
-import com.grudnik.repo.UserRepository;
 import com.grudnik.services.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,8 +29,8 @@ public class IndexController {
     @RequestMapping(value = "/")
     public String index(Model model){
 
-        HashMap<String, List<Category>> categories = indexService.getcategory();
-        List<MainCategory> maincategories = indexService.getmaincategory();
+        HashMap<String, List<Category>> categories = indexService.getCategory();
+        List<MainCategory> maincategories = indexService.getMainCategory();
 
         model.addAttribute("categories",categories);
         model.addAttribute("maincategories",maincategories);
