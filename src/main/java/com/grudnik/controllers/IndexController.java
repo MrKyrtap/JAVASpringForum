@@ -29,7 +29,7 @@ public class IndexController {
     @RequestMapping(value = "/")
     public String index(Model model){
 
-        HashMap<String, List<Category>> categories = indexService.getCategory();
+        HashMap<MainCategory, List<Category>> categories = indexService.getCategory();
         List<MainCategory> maincategories = indexService.getMainCategory();
 
         model.addAttribute("categories",categories);

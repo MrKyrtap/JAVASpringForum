@@ -15,7 +15,7 @@
 <div th:replace="header/header :: header">dupa</div>
 <table align="center" style="width:80%" class="table">
     <tr class="info" th:each="category : ${categories}">
-        <td colspan="2"><span style="font-weight: bold" th:text="${category.key}"/></td>
+        <td colspan="2"><span style="font-weight: bold" th:text="${category.key.name}"/></td>
     <tr th:each="cat : ${category.value}">
         <td width="50px"><img width="50px" src="http://www.free-icons-download.net/images/wall-post-icon-18555.png"/>
         </td>

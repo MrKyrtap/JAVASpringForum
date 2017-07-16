@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.
                 authorizeRequests()
                 .antMatchers("/login").permitAll()
-
+                .antMatchers("/").permitAll()
                 .antMatchers("/post/delete").hasAuthority("ADMIN")
 
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
@@ -63,23 +63,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login").and().exceptionHandling();
               //  .accessDeniedPage("/access-denied");
     }
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/user").hasRole("ADMIN")
-//                .antMatchers("/cars").hasRole("ADMIN")
-//                .antMatchers("/index").hasRole("ADMIN")
-//                .antMatchers("/panel").hasRole("USER")
-//               // .antMatchers("/**").permitAll()
-//                .antMatchers("/signup","/").permitAll()
-//                .anyRequest().authenticated() // 7
-//                .and()
-//                .formLogin()
-//                .defaultSuccessUrl("/panel/")
-//                .and()
-//                .logout()
-//                .and()
-//                .csrf().disable();
-//    }
+
 }
