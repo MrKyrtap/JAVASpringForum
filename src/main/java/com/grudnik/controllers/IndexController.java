@@ -18,27 +18,27 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-   private final IndexService indexService;
+    private final IndexService indexService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public IndexController(IndexService indexService) {
         this.indexService = indexService;
     }
 
     @RequestMapping(value = "/")
-    public String index(Model model){
+    public String index(Model model) {
 
         HashMap<MainCategory, List<Category>> categories = indexService.getCategory();
         List<MainCategory> maincategories = indexService.getMainCategory();
 
-        model.addAttribute("categories",categories);
-        model.addAttribute("maincategories",maincategories);
+        model.addAttribute("categories", categories);
+        model.addAttribute("maincategories", maincategories);
 
 
         return "index";
     }
-
 
 
 }

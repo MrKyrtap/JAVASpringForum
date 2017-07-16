@@ -36,33 +36,35 @@ public class PostController {
         postService.addPost(new Date(), author, text, topicid);
         return "redirect:" + new String("/topic/" + topicid);
     }
+
     @RequestMapping(value = "post/edit/{id}", method = RequestMethod.GET)
     public String editPost(Model model, HttpServletRequest request, @PathVariable("id") int id) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String author = auth.getName();
         String text = postService.getText(id);
-        if(postService.editPost(id,author)){
-            model.addAttribute("text",text);
-            model.addAttribute("id",id);
+        if (postService.editPost(id, author)) {
+            model.addAttribute("text", text);
+            model.addAttribute("id", id);
             return "reply";
-        }else{
+        } else {
             model.addAttribute("message", new String("Not your post!"));
-            return "message" ;
+            return "message";
         }
     }
+
     @RequestMapping(value = "post/edit/save", method = RequestMethod.POST)
     public String saveEdited(Model model, HttpServletRequest request) {
         int postid = Integer.parseInt(request.getParameter("postid"));
         String text = request.getParameter("text");
 
-        return "redirect:" + new String("/topic/"+postService.saveEdited(text, postid));
+        return "redirect:" + new String("/topic/" + postService.saveEdited(text, postid));
     }
 
-    @RequestMapping (value = "post/delete", method = RequestMethod.POST)
-        public String deletePost(Model model, HttpServletRequest request){
-            int postid = Integer.parseInt(request.getParameter("postid"));
-            int topicid =  postService.deletePost(postid);
-            return "redirect:" + new String("/topic/" + topicid);
+    @RequestMapping(value = "post/delete", method = RequestMethod.POST)
+    public String deletePost(Model model, HttpServletRequest request) {
+        int postid = Integer.parseInt(request.getParameter("postid"));
+        int topicid = postService.deletePost(postid);
+        return "redirect:" + new String("/topic/" + topicid);
     }
 }

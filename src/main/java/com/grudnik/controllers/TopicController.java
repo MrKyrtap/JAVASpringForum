@@ -32,14 +32,15 @@ public class TopicController {
         model.addAttribute("id", id);
         return "topic";
     }
+
     @RequestMapping(value = "topic/new", method = RequestMethod.POST)
-    public String newtopic(Model model, HttpServletRequest request){
+    public String newtopic(Model model, HttpServletRequest request) {
         String txt = request.getParameter("text");
         String topic = request.getParameter("topic");
         String catid = request.getParameter("catid");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String author = auth.getName();
-        int x  = topicService.addNewTopic(author,topic,txt, catid);
-        return "redirect:" + new String("/topic/"+x);
+        int x = topicService.addNewTopic(author, topic, txt, catid);
+        return "redirect:" + new String("/topic/" + x);
     }
 }

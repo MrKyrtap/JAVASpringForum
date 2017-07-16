@@ -35,7 +35,6 @@ public class IndexService {
         List<MainCategory> mcat = maincatrepo.findAll();
         for (MainCategory maincategory : mcat) {
             list = catrepo.findByCategoryId(maincategory.getId());
-
             hashmap.put(maincategory, list);
         }
         return hashmap;
@@ -44,9 +43,16 @@ public class IndexService {
     public List<MainCategory> getMainCategory() {
         return maincatrepo.findAll();
     }
+
     public void renameMainCategory(String oldName, String newName){
         MainCategory cat = maincatrepo.findOne(Integer.parseInt(oldName));
         cat.setName(newName);
         maincatrepo.save(cat);
+    }
+
+    public void renameCategory(String category, String newname) {
+        Category cat  = catrepo.findOne(Integer.parseInt(category));
+        cat.setName(newname);
+        catrepo.save(cat);
     }
 }
