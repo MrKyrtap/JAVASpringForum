@@ -38,7 +38,8 @@ public class TopicService {
 
     }
     public int addNewTopic(String author, String topic, String text, String catid){
-        Topic newt = new Topic();
+
+            Topic newt = new Topic();
         User user = userRepository.findByMail(author);
         Category cat = categoryRepository.findOne(Integer.parseInt(catid));
         Date date = new Date();

@@ -18,14 +18,14 @@
         <div class="form-group">
             <label class="col-md-4 control-label">Topic</label>
 
-            <input id="topis" name="topic" type="text" placeholder="placeholder"
-                   class="form-control input-md"/>
+            <input id="topis" name="topic" type="text"
+                   class="form-control input-md" th:required="required" />
 
         </div>
         <div class="form-group">
             <label class="col-md-4 control-label">Text</label>
 
-            <textarea rows="10" class="form-control" id="text" name="text"></textarea>
+            <textarea  th:required="required" rows="10" class="form-control" id="text" name="text"></textarea>
 
         </div>
         <div class="form-group">

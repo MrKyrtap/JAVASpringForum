@@ -1,6 +1,7 @@
 package com.grudnik.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -13,6 +14,7 @@ public class Topic {
     int id;
     @ManyToOne
     Category category;
+    @NotNull
     String name;
     @ManyToOne
     User author;

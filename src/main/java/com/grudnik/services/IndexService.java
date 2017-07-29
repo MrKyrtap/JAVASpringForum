@@ -1,14 +1,12 @@
 package com.grudnik.services;
 
+import com.grudnik.dto.InfoDTO;
 import com.grudnik.entities.Category;
 import com.grudnik.entities.MainCategory;
-import com.grudnik.repo.CategoryRepository;
-import com.grudnik.repo.MainCategoryRepsitory;
+import com.grudnik.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,12 +17,21 @@ import java.util.List;
 public class IndexService {
     private final CategoryRepository catrepo;
     private final MainCategoryRepsitory maincatrepo;
+    private final UserRepository userrepo;
+    private final TopicRepository topicRepository;
+    private final PostRepository postRepository;
+
+
+
 
 
     @Autowired
-    public IndexService(CategoryRepository catrepo, MainCategoryRepsitory maincatrepo) {
+    public IndexService(CategoryRepository catrepo, MainCategoryRepsitory maincatrepo, UserRepository userrepo, TopicRepository topicRepository, PostRepository postRepository) {
         this.catrepo = catrepo;
         this.maincatrepo = maincatrepo;
+        this.userrepo = userrepo;
+        this.topicRepository = topicRepository;
+        this.postRepository = postRepository;
     }
 
     public HashMap<MainCategory, List<Category>> getCategory() {
@@ -54,5 +61,14 @@ public class IndexService {
         Category cat  = catrepo.findOne(Integer.parseInt(category));
         cat.setName(newname);
         catrepo.save(cat);
+    }
+
+    public InfoDTO getInformation() {
+        InfoDTO info = new InfoDTO();
+        info.setLastUser(userrepo.findFirstByOrderByIdDesc().getName());
+        info.setUsersCount((int) userrepo.count());
+        info.setTopicsCount((int) topicRepository.count());
+        info.setPostsCount((int) postRepository.count());
+        return  info;
     }
 }

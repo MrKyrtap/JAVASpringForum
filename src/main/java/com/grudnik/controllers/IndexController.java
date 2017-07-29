@@ -1,5 +1,6 @@
 package com.grudnik.controllers;
 
+import com.grudnik.dto.InfoDTO;
 import com.grudnik.entities.Category;
 import com.grudnik.entities.MainCategory;
 import com.grudnik.services.IndexService;
@@ -32,8 +33,9 @@ public class IndexController {
 
         HashMap<MainCategory, List<Category>> categories = indexService.getCategory();
         List<MainCategory> maincategories = indexService.getMainCategory();
-
+        InfoDTO info = indexService.getInformation();
         model.addAttribute("categories", categories);
+        model.addAttribute("information", info);
         model.addAttribute("maincategories", maincategories);
 
 

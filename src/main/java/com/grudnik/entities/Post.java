@@ -3,6 +3,7 @@ package com.grudnik.entities;
 import com.sun.javafx.beans.IDProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -13,6 +14,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
+    @NotNull
     String text;
     Date date;
     @ManyToOne

@@ -25,5 +25,23 @@
     </tr>
     </tr>
 </table>
+<table align="center"  style="width:80%" class="table">
+    <tr>
+        <td>
+            Mamy <span style="font-weight: bold" th:text="${information.usersCount}"/> userow
+        </td>
+        <td>
+            Najnowszy to <span style="font-weight: bold" th:text="${information.lastUser}"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Mamy <span style="font-weight: bold" th:text="${information.topicsCount}"/> tematow.
+        </td>
+        <td>
+            Mamy <span style="font-weight: bold" th:text="${information.postsCount}"/> postów.
+        </td>
+    </tr>
+</table>
 </body>
 </html>
