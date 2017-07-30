@@ -28,7 +28,7 @@
 <table align="center"  style="width:80%" class="table">
     <tr>
         <td>
-            Mamy <span style="font-weight: bold" th:text="${information.usersCount}"/> userow
+            Mamy <span style="font-weight: bold" th:text="${information.usersCount}"/> userów
         </td>
         <td>
             Najnowszy to <span style="font-weight: bold" th:text="${information.lastUser}"/>
@@ -36,12 +36,12 @@
     </tr>
     <tr>
         <td>
-            Mamy <span style="font-weight: bold" th:text="${information.topicsCount}"/> tematow.
-        </td>
-        <td>
-            Mamy <span style="font-weight: bold" th:text="${information.postsCount}"/> postów.
+            Nasi użytkownicy stworzyli <span style="font-weight: bold" th:text="${information.topicsCount}"/> tematów,
+
+           napisali w nich  <span style="font-weight: bold" th:text="${information.postsCount}"/> postów.
         </td>
     </tr>
+
 </table>
 </body>
 </html>

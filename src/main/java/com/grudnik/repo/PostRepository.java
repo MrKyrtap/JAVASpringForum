@@ -12,5 +12,6 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
     List<Post> findByTopicId(int id);
+    int countByAutorId(int id);
 
 }

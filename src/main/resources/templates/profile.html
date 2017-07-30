@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring forum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body style="margin:4px; padding:4px; ">
+
+<span style="font-weight: bold" th:text="${name}"/>
+<div th:replace="header/header :: header">dupa</div>
+
+<table align="center" style="width:80%" class="table">
+    <tr class="info">
+        <td colspan="3"><span style="font-weight: bold" th:text="'Profil użytkownika: '+${profile.user.name}"/></td>
+    </tr>
+
+    <tr>
+        <td><img src="http://www.pmklogistics.pl/images/avatar_new.png" width="100px" height="100px"/></td>
+        <td>
+            Nazwa użytkownika: <span style="font-weight: bold" th:text="${profile.user.name}"/><br/>
+            Data dołączenia: <span style="font-weight: bold" th:text="${profile.user.regDate}"/><br/>
+            Wiek: <span style="font-weight: bold" th:text="${profile.userAge}"/><br/>
+            Płeć:<br/>
+            Miejsce zamieszkania:  <span style="font-weight: bold" th:text="${profile.user.place}"/><br/>
+        </td>
+        <td>Użytkownik napisał <span style="font-weight: bold" th:text="${profile.postsCount}"/> postów. <br/>
+            Użytkownik stworzył <span style="font-weight: bold" th:text="${profile.topicCount}"/> tematów.<br/>
+            <a href="#">Pokaż wszytskie posty użytkownika.</a>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>

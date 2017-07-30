@@ -14,7 +14,14 @@
 <div>
     <table style="width: 80%" align="center" class="table table-bordered" th:each="post : ${posts}">
         <tr>
-            <td rowspan="2" th:text="${post.autor.name}"/>
+            <td rowspan="2">
+
+                <a th:href="'/profile/show/'+${post.autor.id}"> <span style="font-weight: bold"
+                                                                      th:text="${post.autor.name}"/></a>
+                <br/>
+                <img src="http://www.pmklogistics.pl/images/avatar_new.png" width="100px" height="100px"/>
+            </td>
+
             <td style="font-size: small" th:text=" 'Dodano: '+${post.date}"/>
             <td style="font-size: small"><a th:href="'/post/edit/'+${post.id}">
                 <button class="btn btn-info">Edit</button>
@@ -40,7 +47,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">Text</label>
 
-                <textarea width="80%" rows="10" class="form-control" id="text" name="text"  th:required="required"></textarea>
+                <textarea width="80%" rows="10" class="form-control" id="text" name="text"
+                          th:required="required"></textarea>
 
             </div>
             <div class="form-group">
