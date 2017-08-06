@@ -13,6 +13,8 @@
 
 <span style="font-weight: bold" th:text="${name}"/>
 <div th:replace="header/header :: header">dupa</div>
+
+
 <table align="center" style="width:80%" class="table">
     <tr class="info" th:each="category : ${categories}">
         <td colspan="2"><span style="font-weight: bold" th:text="${category.key.name}"/></td>
@@ -26,7 +28,7 @@
     </tr>
 </table>
 <table align="center"  style="width:80%" class="table">
-    <tr>
+    <tr >
         <td>
             Mamy <span style="font-weight: bold" th:text="${information.usersCount}"/> userów
         </td>
@@ -35,7 +37,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td colspan="2">
             Nasi użytkownicy stworzyli <span style="font-weight: bold" th:text="${information.topicsCount}"/> tematów,
 
            napisali w nich  <span style="font-weight: bold" th:text="${information.postsCount}"/> postów.

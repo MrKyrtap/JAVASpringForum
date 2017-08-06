@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8"/>
@@ -14,7 +15,31 @@
     <a href="/" > <h1 style="color: aliceblue; margin-left: 20px">SPRING forum</h1></a>
     <h5 style="margin-left: 60px;color: darkgrey">forum with JAVA engine</h5>
 
+
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+
+
+
+
+                <div sec:authorize="isAnonymous()">            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+            </ul>
+                </div>
+        </div>
+    </nav>
+
 </div>
+
 </body>
 
 </html>
