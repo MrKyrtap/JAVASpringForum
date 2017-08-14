@@ -27,14 +27,20 @@
 
 
             <div sec:authorize="isAnonymous()">
-                <ul style="background-color: #1b6d85" class="nav navbar-nav navbar-right">
-                    <li><a href="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <ul style="background-color: #1b6d85" class="nav navbar-nav navbar-right">
+                <li><a href="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
-                </ul>
-            </div>
+            </ul>
+        </div>
+
+
             <div sec:authorize="isAuthenticated()">
                 <ul style="background-color: #1b6d85" class="nav navbar-nav navbar-right">
+                    <li sec:authorize="hasAuthority('ADMIN')" >
+                    <a href="/admin"><span class="glyphicon glyphicon-wrench"></span> Panel admina</a>
+
+                    </li>
                     <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Twój profil</a></li>
                     <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
 
@@ -44,7 +50,9 @@
         </div>
     </nav>
 
+
 </div>
+
 
 </body>
 

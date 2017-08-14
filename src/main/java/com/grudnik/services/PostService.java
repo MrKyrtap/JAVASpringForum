@@ -32,16 +32,18 @@ public class PostService {
         Post post = new Post();
         User user = userRepository.findByMail(usermail);
         Topic t = topicRepository.findOne(Integer.parseInt(topic));
+
         post.setDate(date);
         post.setAutor(user);
         post.setText(text);
         post.setTopic(t);
+        t.getCategory().setLastPost(post);
         postRepository.save(post);
+        topicRepository.save(t);
     }
 
     public boolean editPost(int id, String user) {
         String trueAuthor = postRepository.findOne(id).getAutor().getMail();
-        System.out.println("true : " + trueAuthor+" user:"+user);
         return (trueAuthor.equals(user)) ? true : false;
     }
     public String getText(int id){

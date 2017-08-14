@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 </head>
 <body style="margin:4px; padding:4px; ">
 
@@ -17,11 +19,15 @@
 
 <table align="center" style="width:80%" class="table">
     <tr class="info" th:each="category : ${categories}">
-        <td colspan="2"><span style="font-weight: bold" th:text="${category.key.name}"/></td>
+        <td colspan="3"><span style="font-weight: bold" th:text="${category.key.name}"/></td>
     <tr th:each="cat : ${category.value}">
         <td width="50px"><img width="50px" src="http://www.free-icons-download.net/images/wall-post-icon-18555.png"/>
         </td>
-        <td><a th:href="'category/'+${cat.name}+'-'+${cat.id}"> <span th:text="${cat.name}"/></a></td>
+        <td width="70%"><a th:href="'category/'+${cat.name}+'-'+${cat.id}"> <span th:text="${cat.name}"/></a>
+            </td>
+    <td>Ostatni post napisał:  <span style="font-weight: bold"  th:text="${cat.lastPost.autor.name}"/>,<br/>
+        w temacie <span id="topicspan" style="font-weight: bold" th:text="${cat.lastPost.topic.name}"/>,<br/>
+    o godzinie <span style="font-weight: bold" th:text="${cat.lastPost.date}"/> </td>
 
 
     </tr>

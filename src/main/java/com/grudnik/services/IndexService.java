@@ -3,6 +3,8 @@ package com.grudnik.services;
 import com.grudnik.dto.InfoDTO;
 import com.grudnik.entities.Category;
 import com.grudnik.entities.MainCategory;
+import com.grudnik.entities.Post;
+import com.grudnik.entities.Topic;
 import com.grudnik.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.session.SessionRegistry;
@@ -38,14 +40,19 @@ public class IndexService  {
 
     public HashMap<MainCategory, List<Category>> getCategory() {
         HashMap<MainCategory, List<Category>> hashmap = new HashMap<MainCategory, List<Category>>();
-
         List<Category> list;
         List<MainCategory> mcat = maincatrepo.findAllByOrderByIdAsc();
         for (MainCategory maincategory : mcat) {
 
             list = catrepo.findByCategoryId(maincategory.getId());
             hashmap.put(maincategory, list);
-            System.out.println(maincategory.getName());
+      //      System.out.println(maincategory.getName());
+//            for (int i = 0 ; i<list.size();i++) {
+//                System.out.println(list.get(i).getLastPost().getAutor().getName());
+//
+//
+//
+//            }
         }
         return hashmap;
     }
