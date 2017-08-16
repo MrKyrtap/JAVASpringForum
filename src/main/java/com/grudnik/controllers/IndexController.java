@@ -3,8 +3,11 @@ package com.grudnik.controllers;
 import com.grudnik.dto.InfoDTO;
 import com.grudnik.entities.Category;
 import com.grudnik.entities.MainCategory;
+import com.grudnik.entities.User;
 import com.grudnik.services.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +45,5 @@ public class IndexController {
 
         return "index";
     }
-
 
 }

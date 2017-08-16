@@ -1,15 +1,14 @@
 package com.grudnik.services;
 
 import com.grudnik.dto.InfoDTO;
-import com.grudnik.entities.Category;
-import com.grudnik.entities.MainCategory;
-import com.grudnik.entities.Post;
-import com.grudnik.entities.Topic;
+import com.grudnik.entities.*;
 import com.grudnik.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,6 +25,8 @@ public class IndexService  {
     private final TopicRepository topicRepository;
     private final PostRepository postRepository;
 
+    @Autowired
+    private SessionRegistry sessionRegistry;
 
 
 
@@ -79,6 +80,15 @@ public class IndexService  {
         info.setUsersCount((int) userrepo.count());
         info.setTopicsCount((int) topicRepository.count());
         info.setPostsCount((int) postRepository.count());
+
+        final List<Object> allPrincipals = sessionRegistry.getAllPrincipals();
+        List<User> usersOnline  = new ArrayList<>();
+        for (final Object principal : allPrincipals) {
+
+            final UserDetails user = (UserDetails)principal;
+            usersOnline.add(userrepo.findByMail(user.getUsername()));
+        }
+        info.setUsersOnline(usersOnline);
         return  info;
     }
 

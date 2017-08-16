@@ -1,5 +1,9 @@
 package com.grudnik.dto;
 
+import com.grudnik.entities.User;
+
+import java.util.List;
+
 /**
  * Created by PatrykGrudnik on 29/07/2017.
  */
@@ -8,6 +12,15 @@ public class InfoDTO {
     int usersCount;
     int topicsCount;
     int postsCount;
+    List<User> usersOnline;
+
+    public List<User> getUsersOnline() {
+        return usersOnline;
+    }
+
+    public void setUsersOnline(List<User> usersOnline) {
+        this.usersOnline = usersOnline;
+    }
 
     public int getTopicsCount() {
         return topicsCount;

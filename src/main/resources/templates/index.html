@@ -24,17 +24,17 @@
         <td width="50px"><img width="50px" src="http://www.free-icons-download.net/images/wall-post-icon-18555.png"/>
         </td>
         <td width="70%"><a th:href="'category/'+${cat.name}+'-'+${cat.id}"> <span th:text="${cat.name}"/></a>
-            </td>
-    <td>Ostatni post napisał:  <span style="font-weight: bold"  th:text="${cat.lastPost.autor.name}"/>,<br/>
-        w temacie <span id="topicspan" style="font-weight: bold" th:text="${cat.lastPost.topic.name}"/>,<br/>
-    o godzinie <span style="font-weight: bold" th:text="${cat.lastPost.date}"/> </td>
+        </td>
+        <td>Ostatni post napisał: <span style="font-weight: bold" th:text="${cat.lastPost.autor.name}"/>,<br/>
+            w temacie <span id="topicspan" style="font-weight: bold" th:text="${cat.lastPost.topic.name}"/>,<br/>
+            o godzinie <span style="font-weight: bold" th:text="${cat.lastPost.date}"/></td>
 
 
     </tr>
     </tr>
 </table>
-<table align="center"  style="width:80%" class="table">
-    <tr >
+<table align="center" style="width:80%" class="table">
+    <tr>
         <td>
             Mamy <span style="font-weight: bold" th:text="${information.usersCount}"/> userów
         </td>
@@ -46,8 +46,18 @@
         <td colspan="2">
             Nasi użytkownicy stworzyli <span style="font-weight: bold" th:text="${information.topicsCount}"/> tematów,
 
-           napisali w nich  <span style="font-weight: bold" th:text="${information.postsCount}"/> postów.
+            napisali w nich <span style="font-weight: bold" th:text="${information.postsCount}"/> postów.
         </td>
+    </tr>
+    <tr>
+
+        <td>
+            Zalogowani:
+            <span th:each="user : ${information.usersOnline}">
+                <a th:href="'/profile/show/'+${user.id}" > <span th:text=" ${user.name}"/></a>
+            </span>
+        </td>
+
     </tr>
 
 </table>
