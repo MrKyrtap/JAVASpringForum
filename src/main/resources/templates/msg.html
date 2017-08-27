@@ -83,8 +83,24 @@
 <div th:replace="header/header :: header">dupa</div>
 
 <div class="content">
-msg
-    <span style="font-weight: bold" th:text="${who}"/><br/>
-</div>
+
+    <span th:each="c : ${convs}">
+        ______
+               tytul: <span th:text=" ${c.title}"/><br/>
+
+               autor <span th:text=" ${c.from.name}"/><br/>
+
+        </span>
+
+
+    <span th:each="m : ${messages}">
+        ______
+               tytul: <span th:text=" ${m.message}"/><br/>
+
+             >
+
+        </span>
+    </div>
+
 </body>
 </html>

@@ -11,10 +11,14 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
+
     @ManyToOne
-    User from;
+    Conversation conversation;
+
     @ManyToOne
-    User to;
+    User author;
+
+
     String message;
     Date date;
 
@@ -26,20 +30,20 @@ public class Message {
         this.id = id;
     }
 
-    public User getFrom() {
-        return from;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setFrom(User from) {
-        this.from = from;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
-    public User getTo() {
-        return to;
+    public Conversation getConversation() {
+        return conversation;
     }
 
-    public void setTo(User to) {
-        this.to = to;
+    public void setConversation(Conversation conversation) {
+        this.conversation = conversation;
     }
 
     public String getMessage() {

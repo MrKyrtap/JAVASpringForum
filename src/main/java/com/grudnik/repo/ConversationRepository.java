@@ -1,6 +1,6 @@
 package com.grudnik.repo;
 
-import com.grudnik.entities.Message;
+import com.grudnik.entities.Conversation;
 import com.grudnik.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,10 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by PatrykGrudnik on 30/04/2017.
+ * Created by PatrykGrudnik on 27/08/2017.
  */
 @Repository
-public interface MsgRepository extends JpaRepository<Message, Integer> {
-
-     List<Message> findByConversationId(int id);
+public interface ConversationRepository extends JpaRepository<Conversation, Integer>{
+    List<Conversation> findByToId(int id);
 }
